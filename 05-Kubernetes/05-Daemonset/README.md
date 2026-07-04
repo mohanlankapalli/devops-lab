@@ -30,6 +30,20 @@ Unlike a Deployment, you do not specify replicas.
 
 See `commands.md`.
 
+## Output
+
+### 1. DaemonSet Created
+
+![DaemonSet Created](screenshots/01-daemonset-created.png)
+
+### 2. DaemonSet Pod
+
+![DaemonSet Pod](screenshots/02-daemonset-pods.png)
+
+### 3. DaemonSet Details
+
+![DaemonSet Describe](screenshots/03-daemonset-describe.png)
+
 ## Learning
 
 - Deployment manages replicas.
