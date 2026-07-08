@@ -65,10 +65,6 @@ ResourceQuota ensures fair resource allocation and improves cluster stability.
 
 ![Pod Created](screenshots/04-pod-created.png)
 
-### 5. Quota Enforcement
-
-![Quota Error](screenshots/05-quota-exceeded.png)
-
 ---
 
 ## Key Learnings
