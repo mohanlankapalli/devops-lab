@@ -15,13 +15,13 @@ kubectl get pods
 ## Describe Pod
 
 ```bash
-kubectl describe pod pod-emptydir
+kubectl describe pod pod1
 ```
 
 ## Open Shell Inside Container
 
 ```bash
-kubectl exec -it pod-emptydir -- sh
+kubectl exec -it pod1 -- sh
 ```
 
 ## Verify Mounted Directory
