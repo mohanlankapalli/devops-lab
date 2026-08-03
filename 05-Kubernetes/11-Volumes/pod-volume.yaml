@@ -10,7 +10,7 @@ spec:
       - name: v1
         mountPath: /flm/dev
     - name: cont2
-      image: nginx
+      image: busybox
       command: ["sh", "-c", "while true; do sleep 3600; done"]
       volumeMounts:
       - name: v1
