@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hostpath-volume
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: swiggy
+  template:
+    metadata:
+      labels:
+        app: swiggy
+    spec:
+      containers:
+        - name: cont1
+          image: ubuntu
+          command: ["/bin/bash", "-c", "while true; do echo Hi all; sleep 10s; done"]
+          volumeMounts:
+            - name: devops
+              mountPath: /tmp/dev
+        - name: cont2
+          image: ubuntu
+          command: ["/bin/bash", "-c", "while true; do echo Hi all; sleep 10s; done"]
+          volumeMounts:
+            - name: devops
+              mountPath: /tmp/test
+      volumes:
+        - name: devops
+          hostPath:
+            path: /tmp/mydata
+            type: DirectoryOrCreate
