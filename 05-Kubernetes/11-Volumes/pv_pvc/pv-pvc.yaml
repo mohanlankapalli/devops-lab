@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: cont1
+          image: nginx
+          command: ["/bin/bash", "-c", "while true; do echo Hi all; sleep 10s; done"]
+          volumeMounts:
+            - name: devops
+              mountPath: /temp/dev
+        - name: cont2
+          image: httpd
+          command: ["/bin/bash", "-c", "while true; do echo Hi all; sleep 10s; done"]
+          volumeMounts:
+            - name: devops
+              mountPath: /temp/test
+      volumes:
+        - name: devops
+          persistentVolumeClaim:
+            claimName: pvc-1

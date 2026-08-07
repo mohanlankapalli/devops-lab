@@ -48,18 +48,26 @@ kubectl describe pvc
 
 ---
 
-## Create Pod Using PVC
+## Create Deployment Using PVC
 
 ```bash
-kubectl apply -f pod.yaml
+kubectl apply -f pv-pvc.yaml
 ```
 
 ---
 
-## Verify Pod
+## Verify Deployment
 
 ```bash
-kubectl get pods
+kubectl get deploy
+```
+
+---
+
+## Verify Pods
+
+```bash
+kubectl get pods -l app=myapp
 ```
 
 ---
@@ -72,18 +80,18 @@ kubectl describe pod <pod-name>
 
 ---
 
-## Enter Pod
+## Enter Container in the Pod
 
 ```bash
-kubectl exec -it <pod-name> -- sh
+kubectl exec -it <pod-name> -c cont1 -- sh
 ```
 
 ---
 
-## Create File
+## Create File in Mounted Volume
 
 ```bash
-echo "Persistent Storage" > /data/test.txt
+echo "Persistent Storage" > /temp/dev/test.txt
 ```
 
 ---
@@ -91,23 +99,23 @@ echo "Persistent Storage" > /data/test.txt
 ## Verify File
 
 ```bash
-cat /data/test.txt
+cat /temp/dev/test.txt
 ```
 
 ---
 
-## Delete Pod
+## Delete Deployment
 
 ```bash
-kubectl delete pod <pod-name>
+kubectl delete deployment myapp
 ```
 
 ---
 
-## Recreate Pod
+## Recreate Deployment
 
 ```bash
-kubectl apply -f pod.yaml
+kubectl apply -f pv-pvc.yaml
 ```
 
 ---
@@ -115,7 +123,7 @@ kubectl apply -f pod.yaml
 ## Verify Data Persistence
 
 ```bash
-cat /data/test.txt
+cat /temp/dev/test.txt
 ```
 
 ---
@@ -123,7 +131,7 @@ cat /data/test.txt
 ## Delete PVC
 
 ```bash
-kubectl delete pvc <pvc-name>
+kubectl delete pvc pvc-1
 ```
 
 ---
@@ -131,7 +139,7 @@ kubectl delete pvc <pvc-name>
 ## Delete PV
 
 ```bash
-kubectl delete pv <pv-name>
+kubectl delete pv pv-1
 ```
 
 ---
